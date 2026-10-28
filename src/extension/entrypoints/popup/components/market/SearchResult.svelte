@@ -47,7 +47,7 @@
 				tornW3bMarket = tornW3bResult;
 			})
 			.catch((err: Error) => {
-				error = err.message ?? "Unable to load market prices.";
+				error = err.message ?? "Pazar fiyatları yüklenemedi.";
 			})
 			.finally(() => {
 				loading = false;
@@ -82,7 +82,7 @@
 
 {#if error}
 	<Alert variant="destructive">
-		<AlertTitle>Market lookup failed</AlertTitle>
+		<AlertTitle>Pazar sorgusu başarısız oldu</AlertTitle>
 		<AlertDescription>{error}</AlertDescription>
 	</Alert>
 {/if}
@@ -106,11 +106,11 @@
 				</CardDescription>
 				<div class="grid grid-cols-2 gap-2 pt-1 text-xs">
 					<div>
-						<div class="text-muted-foreground">Circulation</div>
+						<div class="text-muted-foreground">Dolaşımdaki miktar</div>
 						<div class="">{formatNumber(selectedItem.circulation)}</div>
 					</div>
 					<div>
-						<div class="text-muted-foreground">Market value</div>
+						<div class="text-muted-foreground">Pazar değeri</div>
 						<div class="">{formatNumber(selectedItem.value.market_price, { currency: true })}</div>
 					</div>
 				</div>
@@ -121,18 +121,18 @@
 
 			{#if !isSellable(selectedItem.id)}
 				<Alert variant="destructive">
-					<AlertTitle>Not sellable</AlertTitle>
-					<AlertDescription>This item cannot be sold.</AlertDescription>
+					<AlertTitle>Satılamaz</AlertTitle>
+					<AlertDescription>Bu eşya satılamaz.</AlertDescription>
 				</Alert>
 			{:else if loading}
 				<div class="flex items-center gap-2 py-2 text-muted-foreground">
 					<Spinner class="size-4" />
-					<span>Loading prices...</span>
+					<span>Fiyatlar yükleniyor...</span>
 				</div>
 			{:else if itemMarket}
 				<div class={cn("grid gap-2", { "grid-cols-2": showExternalMarket })}>
 					<MarketPrice
-							title="Item Market"
+							title="Eşya Pazarı"
 							listings={tornListings.map((listing) => ({ amount: listing.amount, price: listing.price }))}
 					/>
 

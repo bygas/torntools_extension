@@ -20,10 +20,10 @@
 <Table class="text-xs leading-tight">
 	<TableHeader>
 		<TableRow>
-			<TableHead class="h-5 p-1">Incr.</TableHead>
-			<TableHead class="h-5 p-1">Stocks</TableHead>
-			<TableHead class="h-5 p-1">Cost</TableHead>
-			<TableHead class="h-5 p-1">Reward</TableHead>
+			<TableHead class="h-5 p-1">Artış</TableHead>
+			<TableHead class="h-5 p-1">Hisse</TableHead>
+			<TableHead class="h-5 p-1">Maliyet</TableHead>
+			<TableHead class="h-5 p-1">Ödül</TableHead>
 			<TableHead class="h-5 p-1">ROI</TableHead>
 		</TableRow>
 	</TableHeader>
@@ -37,7 +37,7 @@
 				<TableCell class="p-1">{formatNumber(stocks)}</TableCell>
 				<TableCell class="p-1">{formatNumber(stocks * stock.market.price, { currency: true })}</TableCell>
 				<TableCell class="p-1">{getStockReward(stock.bonus.description, level)}</TableCell>
-				<TableCell class="p-1">{rewardValue > 0 ? `${formatNumber(roi, { decimals: 1 })}%` : "N/A"}</TableCell>
+				<TableCell class="p-1">{rewardValue > 0 ? `${formatNumber(roi, { decimals: 1 })}%` : "Yok"}</TableCell>
 			</TableRow>
 		{/each}
 	</TableBody>

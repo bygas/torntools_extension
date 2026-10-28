@@ -50,11 +50,11 @@
 </script>
 
 <Command.Root bind:ref={commandRef} shouldFilter={false} class="relative h-auto overflow-visible rounded-md bg-transparent p-0">
-	<Command.Input bind:value={query} placeholder="Search item ..." />
+	<Command.Input bind:value={query} placeholder="Eşya ara ..." />
 
 	{#if listOpen}
 		<Command.List class="mt-1 max-h-52 w-full rounded-md bg-popover p-1 absolute top-full z-10">
-			<Command.Empty class="p-2">No items found.</Command.Empty>
+			<Command.Empty class="p-2">Eşya bulunamadı.</Command.Empty>
 			<Command.Group class="p-0">
 				{#each matches as item (item.id)}
 					<Command.Item value={`${item.id}-${item.name}`} class="">

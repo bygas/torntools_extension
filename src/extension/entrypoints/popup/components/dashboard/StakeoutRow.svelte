@@ -53,7 +53,7 @@
 				{#if row.label}<span class="truncate text-foreground/65">({row.label})</span>{/if}
 			</div>
 			<div class="mt-1 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 text-[10px] text-foreground/80">
-				<span>Life</span>
+				<span>Can</span>
 				<div class="h-1.5 flex-1 overflow-hidden rounded-sm bg-muted">
 					<div class="h-full bg-blue-500" style:width={`${clampPercent((row.lifeCurrent / row.lifeMaximum) * 100)}%`}></div>
 				</div>
@@ -61,10 +61,10 @@
 			</div>
 			<div class="mt-1 flex items-center justify-between gap-2">
 				<span class={`truncate ${getStateClass(row.stateColor)}`}>{row.state}</span>
-				<span class="shrink-0 text-foreground/80">Last action: {row.lastAction}</span>
+				<span class="shrink-0 text-foreground/80">Son eylem: {row.lastAction}</span>
 			</div>
 		</a>
-		<Button variant="ghost" size="icon-xs" class="text-destructive" onclick={() => removeStakeout(row.id)} aria-label="Remove stakeout">
+		<Button variant="ghost" size="icon-xs" class="text-destructive" onclick={() => removeStakeout(row.id)} aria-label="Gözetlemeyi kaldır">
 			<TrashIcon />
 		</Button>
 	</div>

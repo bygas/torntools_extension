@@ -11,7 +11,7 @@
 
 <div class="p-1 pb-0">
 	<InputGroup.Root class="bg-input/30 border-input/30">
-		<InputGroup.Input bind:value={query} placeholder="Search stocks..." class="text-sm" />
+		<InputGroup.Input bind:value={query} placeholder="Hisse ara..." class="text-sm" />
 		<InputGroup.Addon>
 			<MagnifyingGlassIcon class="size-4 opacity-50" />
 		</InputGroup.Addon>

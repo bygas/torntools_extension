@@ -41,27 +41,27 @@
 					id: stakeout.id,
 					name: stakeout.info?.name ?? String(stakeout.id),
 					respect: stakeout.info?.respect ?? 1, // A default of 0 would result in it being detected as 'destroyed'
-					chain: stakeout.info?.chain ?? "N/A",
-					members: stakeout.info?.members?.current ?? "N/A",
-					maxMembers: stakeout.info?.members?.maximum ?? "N/A",
+					chain: stakeout.info?.chain ?? "Yok",
+					members: stakeout.info?.members?.current ?? "Yok",
+					maxMembers: stakeout.info?.members?.maximum ?? "Yok",
 				}))
 	}
 
 	function getMembersLabel(row: FactionStakeoutRow) {
-		return row.members !== "N/A" ? `${row.members}/${row.maxMembers}` : "N/A";
+		return row.members !== "Yok" ? `${row.members}/${row.maxMembers}` : "Yok";
 	}
 
 	function getChainLabel(chain: number | string) {
 		const chainValue = Number(chain);
-		return Number.isFinite(chainValue) && chainValue > 0 ? `${chainValue} chain` : "No chain";
+		return Number.isFinite(chainValue) && chainValue > 0 ? `${chainValue} zincir` : "Zincir yok";
 	}
 </script>
 
 {#if factionStakeoutRows.length}
 	<section class="space-y-1">
 		<div class="flex items-center justify-between">
-			<div class="text-xs font-medium">Faction Stakeouts</div>
-			<Button variant="ghost" size="icon-xs" onclick={() => (factionStakeoutsOpen = !factionStakeoutsOpen)} aria-label="Toggle faction stakeouts">
+			<div class="text-xs font-medium">Fırka Gözetlemeleri</div>
+			<Button variant="ghost" size="icon-xs" onclick={() => (factionStakeoutsOpen = !factionStakeoutsOpen)} aria-label="Fırka gözetlemelerini aç/kapat">
 				{#if factionStakeoutsOpen}<CaretDownIcon />{:else}<CaretRightIcon />{/if}
 			</Button>
 		</div>
@@ -83,10 +83,10 @@
 									<Badge variant="outline" class="shrink-0 whitespace-nowrap">{getMembersLabel(row)}</Badge>
 									<Badge variant="secondary" class="shrink-0 whitespace-nowrap">{getChainLabel(row.chain)}</Badge>
 								{:else}
-									<Badge variant="destructive" class="uppercase">destroyed</Badge>
+									<Badge variant="destructive" class="uppercase">yıkıldı</Badge>
 								{/if}
 							</a>
-							<Button variant="ghost" size="icon-xs" class="text-destructive" onclick={() => removeFactionStakeout(row.id)} aria-label="Remove faction stakeout">
+							<Button variant="ghost" size="icon-xs" class="text-destructive" onclick={() => removeFactionStakeout(row.id)} aria-label="Fırka gözetlemesini kaldır">
 								<TrashIcon />
 							</Button>
 						</div>

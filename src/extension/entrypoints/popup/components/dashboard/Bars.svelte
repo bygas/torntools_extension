@@ -28,10 +28,10 @@
 
 		if (settings?.apiUsage?.user?.bars) {
 			result.push(
-				getResourceBar("energy", "Energy", userdata.energy, LINKS.gym, "bg-[#7cc833]", userdata, settings, currentTime),
-				getResourceBar("nerve", "Nerve", userdata.nerve, LINKS.crimes, "bg-[#b3382c]", userdata, settings, currentTime),
-				getResourceBar("happy", "Happy", userdata.happy, LINKS.properties, "bg-[#d4c927]", userdata, settings, currentTime),
-				getResourceBar("life", "Life", userdata.life, LINKS.items_medical, "bg-[#7b98ee]", userdata, settings, currentTime),
+				getResourceBar("energy", "Enerji", userdata.energy, LINKS.gym, "bg-[#7cc833]", userdata, settings, currentTime),
+				getResourceBar("nerve", "Sinir", userdata.nerve, LINKS.crimes, "bg-[#b3382c]", userdata, settings, currentTime),
+				getResourceBar("happy", "Mutluluk", userdata.happy, LINKS.properties, "bg-[#d4c927]", userdata, settings, currentTime),
+				getResourceBar("life", "Can", userdata.life, LINKS.items_medical, "bg-[#7b98ee]", userdata, settings, currentTime),
 			);
 
 			const chainBar = getChainBar(userdata.chain, userdata, currentTime);
@@ -87,7 +87,7 @@
 
 		return {
 			id: "chain",
-			label: "Chain",
+			label: "Zincir",
 			valueLabel: `${current}/${maximum}`,
 			percent: clampPercent((current / maximum) * 100),
 			href: "https://www.torn.com/factions.php?step=your",
@@ -105,10 +105,10 @@
 
 		return {
 			id: "traveling",
-			label: "Traveling",
+			label: "Seyahat",
 			valueLabel: formatTime(arrivalAt),
 			tickLabel: formatTime({ seconds: Math.max(toSeconds(arrivalAt - currentTime), 0) }, { type: "timer" }),
-			fullLabel: `Landing in ${formatTime({ seconds: Math.max(toSeconds(arrivalAt - currentTime), 0) }, { type: "timer" })}`,
+			fullLabel: `İnişe kalan: ${formatTime({ seconds: Math.max(toSeconds(arrivalAt - currentTime), 0) }, { type: "timer" })}`,
 			percent: clampPercent((current / maximum) * 100),
 			href: "https://www.torn.com/index.php",
 			color: "bg-[#d961ee]",
@@ -137,15 +137,15 @@
 
 		let fullLabel: string;
 		if (id === "happy" && fullAt === "over") {
-			fullLabel = `Resets in ${formatTime({ seconds: tickSeconds }, { type: "timer", hideHours: true })}`;
+			fullLabel = `Sıfırlanmaya kalan: ${formatTime({ seconds: tickSeconds }, { type: "timer", hideHours: true })}`;
 		} else if (typeof fullAt === "string") {
-			fullLabel = "FULL";
+			fullLabel = "DOLU";
 		} else if (id === "chain" && isCooldown) {
-			fullLabel = `Cooldown over in ${formatTime({ seconds: Math.max(toSeconds(fullAt - currentTime), 0) }, { type: "timer", daysToHours: true })}`;
+			fullLabel = `Bekleme bitimine: ${formatTime({ seconds: Math.max(toSeconds(fullAt - currentTime), 0) }, { type: "timer", daysToHours: true })}`;
 		} else if (id === "chain") {
 			fullLabel = formatTime({ seconds: Math.max(toSeconds(fullAt - currentTime), 0) }, { type: "timer", hideHours: true });
 		} else {
-			fullLabel = `Full in ${formatTime({ seconds: Math.max(toSeconds(fullAt - currentTime), 0) }, { type: "timer", daysToHours: true })}`;
+			fullLabel = `Dolmasına: ${formatTime({ seconds: Math.max(toSeconds(fullAt - currentTime), 0) }, { type: "timer", daysToHours: true })}`;
 			if (showFullTime) fullLabel += ` (${formatTime({ milliseconds: fullAt }, { type: "normal" })})`;
 		}
 
@@ -175,7 +175,7 @@
 					</div>
 				</a>
 			{:else}
-				<div class="text-xs text-foreground/80">No bar data available.</div>
+				<div class="text-xs text-foreground/80">Gösterilecek çubuk verisi yok.</div>
 			{/each}
 		</CardContent>
 	</Card>

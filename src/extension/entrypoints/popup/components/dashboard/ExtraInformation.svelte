@@ -21,18 +21,18 @@
 	function getExtraInformation(userdata: DatabaseUserdata, settings: DatabaseSettings) {
 		return [
 			{
-				label: "Events",
-				value: settings?.apiUsage.user.newevents ? (userdata?.notifications.events ?? 0).toString() : "N/A",
+				label: "Olaylar",
+				value: settings?.apiUsage.user.newevents ? (userdata?.notifications.events ?? 0).toString() : "Yok",
 				href: "https://www.torn.com/events.php",
 			},
 			{
-				label: "Messages",
-				value: settings?.apiUsage.user.newmessages ? (userdata?.messages ?? []).filter((message) => !message.seen).length.toString() : "N/A",
+				label: "Mesajlar",
+				value: settings?.apiUsage.user.newmessages ? (userdata?.messages ?? []).filter((message) => !message.seen).length.toString() : "Yok",
 				href: "https://www.torn.com/messages.php",
 			},
 			{
-				label: "Wallet",
-				value: settings?.apiUsage.user.money ? formatNumber(userdata?.money.wallet ?? 0, {currency: true}) : "N/A",
+				label: "Cüzdan",
+				value: settings?.apiUsage.user.money ? formatNumber(userdata?.money.wallet ?? 0, {currency: true}) : "Yok",
 				href: "https://www.torn.com/properties.php#/p=options&tab=vault",
 			},
 		];
@@ -41,7 +41,7 @@
 	function getLastUpdated(userdata: DatabaseUserdata, currentTime: number) {
 		void currentTime;
 
-		return userdata?.date ? formatTime({ milliseconds: userdata.date }, { type: "ago", agoFilter: TO_MILLIS.SECONDS }) : "Never";
+		return userdata?.date ? formatTime({ milliseconds: userdata.date }, { type: "ago", agoFilter: TO_MILLIS.SECONDS }) : "Hiç";
 	}
 </script>
 
@@ -56,7 +56,7 @@
 
 <div class="flex items-center justify-between text-xs text-foreground/80">
 	<div class="flex items-center gap-1">
-		<span>Updated</span>
+		<span>Güncellendi</span>
 		<span class="font-medium text-foreground">{lastUpdated}</span>
 	</div>
 	<Button
@@ -64,8 +64,8 @@
 			size="icon-sm"
 			class={notificationsEnabled ? "text-sidebar-primary" : "text-destructive"}
 			onclick={toggleNotifications}
-			aria-label={notificationsEnabled ? "Disable notifications" : "Enable notifications"}
-			title={notificationsEnabled ? "Notifications enabled" : "Notifications disabled"}
+			aria-label={notificationsEnabled ? "Bildirimleri kapat" : "Bildirimleri aç"}
+			title={notificationsEnabled ? "Bildirimler açık" : "Bildirimler kapalı"}
 	>
 		{#if notificationsEnabled}
 			<BellIcon />

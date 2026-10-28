@@ -20,9 +20,9 @@
 		if (!settings?.apiUsage?.user?.cooldowns || !userdata?.cooldowns) return [];
 
 		return [
-			getCooldown("drug", "Drugs", userdata.cooldowns.drug, "https://www.torn.com/item.php#drugs-items", "text-green-500", userdata, currentTime),
-			getCooldown("booster", "Boosters", userdata.cooldowns.booster, "https://www.torn.com/item.php#boosters-items", "text-orange-500", userdata, currentTime),
-			getCooldown("medical", "Medical", userdata.cooldowns.medical, "https://www.torn.com/item.php#medical-items", "text-blue-500", userdata, currentTime),
+			getCooldown("drug", "Uyuşturucular", userdata.cooldowns.drug, "https://www.torn.com/item.php#drugs-items", "text-green-500", userdata, currentTime),
+			getCooldown("booster", "Güçlendiriciler", userdata.cooldowns.booster, "https://www.torn.com/item.php#boosters-items", "text-orange-500", userdata, currentTime),
+			getCooldown("medical", "Tıbbi", userdata.cooldowns.medical, "https://www.torn.com/item.php#medical-items", "text-blue-500", userdata, currentTime),
 		];
 	}
 

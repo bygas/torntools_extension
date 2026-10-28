@@ -28,7 +28,7 @@
 
 		if (userdata.travel.time_left) {
 			return {
-				country: `Traveling to ${userdata.travel.destination}`,
+				country: `Seyahatte: ${userdata.travel.destination}`,
 				status: null,
 				href: "https://www.torn.com/index.php",
 			};
@@ -41,9 +41,9 @@
 
 		if (until && until > currentTime) {
 			if (status === "jail") {
-				label = `Jailed for ${formatTime({ milliseconds: until - currentTime }, { type: "timer", showDays: true, short: true })}`;
+				label = `Hapiste: ${formatTime({ milliseconds: until - currentTime }, { type: "timer", showDays: true, short: true })}`;
 			} else if (status === "hospital") {
-				label = `Hospitalized for ${formatTime({ milliseconds: until - currentTime }, { type: "timer", showDays: true, short: true })}`;
+				label = `Hastanede: ${formatTime({ milliseconds: until - currentTime }, { type: "timer", showDays: true, short: true })}`;
 			}
 		}
 

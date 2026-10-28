@@ -21,7 +21,7 @@
 				</Table.Row>
 			{:else}
 				<Table.Row>
-					<Table.Cell colspan={2} class="p-1 text-center text-muted-foreground">No listings found.</Table.Cell>
+					<Table.Cell colspan={2} class="p-1 text-center text-muted-foreground">İlan bulunamadı.</Table.Cell>
 				</Table.Row>
 			{/each}
 		</Table.Body>

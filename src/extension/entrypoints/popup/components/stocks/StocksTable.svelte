@@ -72,31 +72,31 @@
 				{/if}
 			</CardHeader>
 			<CardContent class="space-y-1 text-xs">
-				<StockSection label="Price Information">
+				<StockSection label="Fiyat Bilgisi">
 					<div class="grid grid-cols-2 gap-1 rounded-md bg-muted p-2">
 						<span>Current price: {formatNumber(row.stock.market.price, { decimals: 2, currency: true })}</span>
-						<span>Total shares: {formatNumber(row.stock.market.shares)}</span>
+						<span>Toplam hisse: {formatNumber(row.stock.market.shares)}</span>
 						{#if profit}
-							<span>Bought at: {formatNumber(profit.boughtPrice, { decimals: 2, currency: true })}</span>
+							<span>Alış fiyatı: {formatNumber(profit.boughtPrice, { decimals: 2, currency: true })}</span>
 						{/if}
 					</div>
 				</StockSection>
 
-				<StockSection label="Benefit Information">
+				<StockSection label="Fayda Bilgisi">
 					<BenefitInformation stock={row.stock} userStock={row.userStock} />
 				</StockSection>
 
-				<StockSection label="Alerts">
+				<StockSection label="Uyarılar">
 					<div class="grid grid-cols-[auto_1fr] items-center gap-2 rounded-md bg-muted p-2">
-						<label for={`stock-${row.id}-reaches`}>Price reaches</label>
+						<label for={`stock-${row.id}-reaches`}>Fiyat şuna ulaşınca</label>
 						<Input id={`stock-${row.id}-reaches`} type="number" pattern="\d*" inputmode="numeric" min="0" class="h-7" value={$settingsStore?.notifications?.types?.stocks?.[row.id]?.priceReaches ?? ""} onchange={(event) => setAlert(row.id, "priceReaches", event.currentTarget.value)} />
-						<label for={`stock-${row.id}-falls`}>Price falls to</label>
+						<label for={`stock-${row.id}-falls`}>Fiyat şuna düşünce</label>
 						<Input id={`stock-${row.id}-falls`} type="number" pattern="\d*" inputmode="numeric" min="0" class="h-7" value={$settingsStore?.notifications?.types?.stocks?.[row.id]?.priceFalls ?? ""} onchange={(event) => setAlert(row.id, "priceFalls", event.currentTarget.value)} />
 					</div>
 				</StockSection>
 			</CardContent>
 		</Card>
 	{:else}
-		<div class="text-sm text-muted-foreground">No stocks found.</div>
+		<div class="text-sm text-muted-foreground">Hisse bulunamadı.</div>
 	{/each}
 </div>

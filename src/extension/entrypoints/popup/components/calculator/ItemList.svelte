@@ -35,14 +35,14 @@
 				</div>
 			{/if}
 		{:else}
-			<div class="text-muted-foreground">No items selected.</div>
+			<div class="text-muted-foreground">Seçili eşya yok.</div>
 		{/each}
 
 		{#if selectedItems.length}
 			<Separator />
 			<div class="flex justify-between gap-1">
-				<Button size="sm" variant="outline" class="h-6" onclick={clearItems}>Clear</Button>
-				<div class="text-right font-bold">Total: {formatNumber(total, { currency: true })}</div>
+				<Button size="sm" variant="outline" class="h-6" onclick={clearItems}>Temizle</Button>
+				<div class="text-right font-bold">Toplam: {formatNumber(total, { currency: true })}</div>
 			</div>
 		{/if}
 	</CardContent>

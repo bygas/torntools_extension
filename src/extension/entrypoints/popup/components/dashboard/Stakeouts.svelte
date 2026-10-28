@@ -23,11 +23,11 @@
 				id: stakeout.id,
 				name: stakeout.info?.name ?? String(stakeout.id),
 				label: stakeout.label ?? "",
-				activity: stakeout.info?.last_action?.status ?? "N/A",
-				lastAction: stakeout.info?.last_action?.relative ?? "N/A",
+				activity: stakeout.info?.last_action?.status ?? "Yok",
+				lastAction: stakeout.info?.last_action?.relative ?? "Yok",
 				lifeCurrent: stakeout.info?.life?.current ?? 0,
 				lifeMaximum: stakeout.info?.life?.maximum ?? 100,
-				state: stakeout.info?.status?.description ?? "Unknown",
+				state: stakeout.info?.status?.description ?? "Bilinmiyor",
 				stateColor: stakeout.info?.status?.color ?? "gray",
 			}));
 	}
@@ -36,8 +36,8 @@
 {#if stakeoutRows.length}
 	<section class="space-y-1">
 		<div class="flex items-center justify-between">
-			<a class="text-xs font-medium hover:underline" href={targetsUrl} target="_blank" rel="noreferrer">Stakeouts</a>
-			<Button variant="ghost" size="icon-xs" onclick={() => (stakeoutsOpen = !stakeoutsOpen)} aria-label="Toggle stakeouts">
+			<a class="text-xs font-medium hover:underline" href={targetsUrl} target="_blank" rel="noreferrer">Gözetlemeler</a>
+			<Button variant="ghost" size="icon-xs" onclick={() => (stakeoutsOpen = !stakeoutsOpen)} aria-label="Gözetlemeleri aç/kapat">
 				{#if stakeoutsOpen}
 					<CaretDownIcon />
 				{:else}

@@ -15,10 +15,10 @@
 	function getNonDividendBenefitState(userStock: UserStock | null, frequency: number): { status: BenefitStatus; duration?: string } {
 		if (userStock?.bonus?.increment) {
 			if (userStock.bonus.available) return { status: "completed" };
-			return { status: "awaiting", duration: `in ${userStock.bonus.progress}/${frequency} days.` };
+			return { status: "awaiting", duration: `${userStock.bonus.progress}/${frequency} gün içinde.` };
 		}
 
-		return { status: "not-completed", duration: `after ${frequency} days.` };
+		return { status: "not-completed", duration: `${frequency} gün sonra.` };
 	}
 
 	function getDescriptionClass(status: BenefitStatus) {
@@ -37,16 +37,16 @@
 			{#if userStock?.bonus}
 				{
 					userStock.bonus.available ?
-							"Ready now!" :
-							`Available in ${stock.bonus.frequency - userStock.bonus.progress}/${stock.bonus.frequency} days.`
+							"Şimdi hazır!" :
+							`${stock.bonus.frequency - userStock.bonus.progress}/${stock.bonus.frequency} gün sonra alınabilir.`
 				}
 			{:else}
-				Available every {stock.bonus.frequency} days.
+				Her {stock.bonus.frequency} günde bir alınabilir.
 			{/if}
 		</div>
 		<RoiTable {stock} {userStock} />
 	{:else}
-		<div>Required stocks: {formatNumber(userStock?.shares ?? stock.bonus.requirement)}{userStock ? `/${formatNumber(stock.bonus.requirement)}` : ""}</div>
+		<div>Gerekli hisse: {formatNumber(userStock?.shares ?? stock.bonus.requirement)}{userStock ? `/${formatNumber(stock.bonus.requirement)}` : ""}</div>
 		<div>
 			<span class={nonDividendDescriptionClass}>{stock.bonus.description}</span>
 			{#if nonDividendBenefit.duration}
