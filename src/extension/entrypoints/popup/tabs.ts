@@ -9,11 +9,11 @@ export interface PopupTab {
 }
 
 const POPUP_TABS: PopupTab[] = [
-	{ key: "dashboard", label: "Dashboard", path: "/dashboard" },
-	{ key: "marketSearch", label: "Market", path: "/market" },
-	{ key: "calculator", label: "Calculator", path: "/calculator" },
-	{ key: "stocksOverview", label: "Stocks", path: "/stocks" },
-	{ key: "notifications", label: "Notifications", path: "/notifications" },
+	{ key: "dashboard", label: "Panel", path: "/dashboard" },
+	{ key: "marketSearch", label: "Pazar", path: "/market" },
+	{ key: "calculator", label: "Hesap Makinesi", path: "/calculator" },
+	{ key: "stocksOverview", label: "Hisseler", path: "/stocks" },
+	{ key: "notifications", label: "Bildirimler", path: "/notifications" },
 ];
 
 export function getEnabledPopupTabs(settings: DatabaseSettings | undefined) {

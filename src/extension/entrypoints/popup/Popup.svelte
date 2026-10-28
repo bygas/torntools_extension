@@ -48,6 +48,6 @@
     {#if initialized}
         <Router {routes} />
     {:else}
-        <div class="text-sm text-muted-foreground">Loading...</div>
+        <div class="text-sm text-muted-foreground">Yükleniyor...</div>
     {/if}
 </GlobalLayout>

@@ -81,7 +81,7 @@ export default defineConfig({
 	manifest: ({ browser }): UserManifest => {
 		const manifest: UserManifest = {
 			name: "TornTools",
-			description: "Several tools for Torn.",
+			description: "Torn için çeşitli araçlar.",
 			// @ts-expect-error Discouraged notation, but supported.
 			author: "Gregor Kaljulaid - Mephiles[2087524]",
 			host_permissions: ["https://torn.com/"],

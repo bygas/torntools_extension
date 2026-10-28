@@ -23,7 +23,7 @@
 		try {
 			const { access } = await checkAPIPermission(apiKey.trim());
 			if (!access) {
-				permissionError = "TornTools needs a Limited Access key. This key does not have the correct API level.";
+				permissionError = "TornTools için Sınırlı Erişim (Limited Access) anahtarı gerekir. Bu anahtar doğru API seviyesine sahip değil.";
 				setTimeout(() => {
 					permissionError = "";
 				}, 10 * TO_MILLIS.SECONDS);
@@ -36,7 +36,7 @@
 			}
 			await replace(getStartupPath($settingsStore, true));
 		} catch (caughtError) {
-			error = (caughtError as { error?: string; message?: string })?.error ?? (caughtError as Error).message ?? "Unable to save API key.";
+			error = (caughtError as { error?: string; message?: string })?.error ?? (caughtError as Error).message ?? "API anahtarı kaydedilemedi.";
 		} finally {
 			saving = false;
 		}
@@ -53,11 +53,11 @@
 
 <Card size="sm" class="rounded-lg">
 	<CardHeader class="px-4">
-		<CardTitle class="text-base">Welcome to Torn<span class="text-primary">Tools</span></CardTitle>
+		<CardTitle class="text-base">Torn<span class="text-primary">Tools</span>'a Hoş Geldiniz</CardTitle>
 	</CardHeader>
 	<CardContent class="space-y-3 px-4">
 		<div class="space-y-1.5">
-			<label for="api-key" class="text-xs font-medium">Please enter your API key:</label>
+			<label for="api-key" class="text-xs font-medium">Lütfen API anahtarınızı girin:</label>
 			<Input id="api-key" bind:value={apiKey} type="text" autocomplete="off" onkeydown={(event) => event.key === "Enter" && void setApiKey()} />
 		</div>
 
@@ -69,13 +69,13 @@
 		{/if}
 
 		<div class="flex gap-2">
-			<Button size="sm" class="h-8 flex-1" onclick={setApiKey} disabled={saving || !apiKey.trim()}>{saving ? "Setting..." : "Set"}</Button>
-			<Button size="sm" variant="secondary" class="h-8 flex-1" onclick={openApiPage}>Key page</Button>
+			<Button size="sm" class="h-8 flex-1" onclick={setApiKey} disabled={saving || !apiKey.trim()}>{saving ? "Ayarlanıyor..." : "Ayarla"}</Button>
+			<Button size="sm" variant="secondary" class="h-8 flex-1" onclick={openApiPage}>Anahtar sayfası</Button>
 		</div>
 
-		<div class="text-xs text-muted-foreground">TornTools needs a <span class="text-amber-600 dark:text-amber-300">Limited Access</span> key.</div>
+		<div class="text-xs text-muted-foreground">TornTools için <span class="text-amber-600 dark:text-amber-300">Sınırlı Erişim (Limited Access)</span> anahtarı gerekir.</div>
 
-		<Button size="sm" variant="outline" class="h-8 w-full" onclick={openImport}>Import previous settings</Button>
-		<a class="block text-xs text-muted-foreground hover:text-foreground" target="_blank" rel="noreferrer" href={browser.runtime.getURL("/tos.html")}>Terms of Service</a>
+		<Button size="sm" variant="outline" class="h-8 w-full" onclick={openImport}>Önceki ayarları içe aktar</Button>
+		<a class="block text-xs text-muted-foreground hover:text-foreground" target="_blank" rel="noreferrer" href={browser.runtime.getURL("/tos.html")}>Kullanım Şartları</a>
 	</CardContent>
 </Card>
